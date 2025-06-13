@@ -44,22 +44,22 @@ The image generation will work regardless of the platform, and is tested on Wind
 ```
 
 # Screenshots
-`./background.fm --width=1920 --height=1080 --desktop_environment=kde --image_size=extralarge`
+`background.fm --width=1920 --height=1080 --desktop_environment=kde --image_size=extralarge`
 
 ![Screenshot_20250609_232214](https://github.com/user-attachments/assets/3f3c0eda-690f-4e5f-ba19-f341585a30a4)
 
 
-`./background.fm --width=640 --height=480 --desktop_environment=kde --image_size=extralarge --wal_i=1`
+`background.fm --width=640 --height=480 --desktop_environment=kde --image_size=extralarge --wal_i=1`
 
 ![Screenshot_20250609_232606](https://github.com/user-attachments/assets/70ea8d92-c693-439b-b351-5b35d40be5f8)
 
 
-`./background.fm --width=1280 --height=720 --desktop_environment=kde --image_size=extralarge --wal_i=2`
+`background.fm --width=1280 --height=720 --desktop_environment=kde --image_size=extralarge --wal_i=2`
 
 ![Screenshot_20250609_233519](https://github.com/user-attachments/assets/9f1b4884-ab68-48b8-a2d8-7cb96dc11fac)
 
 
-`./background.fm --width=300 --height=300 --desktop_environment=kde --image_size=medium --wal_i=4`
+`background.fm --width=300 --height=300 --desktop_environment=kde --image_size=medium --wal_i=4`
 
 ![Screenshot_20250609_235912](https://github.com/user-attachments/assets/3295af55-14e7-48b6-ad20-173429a847e2)
 
