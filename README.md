@@ -6,15 +6,32 @@ Last.fm tracks the music you listen to via a handy feature called 'scrobbling'.
 Many [services](https://www.last.fm/about/trackmymusic) are supported.
 Your scrobbled tracks can then be interacted in various ways via their [API](https://www.last.fm/api).
 This app fetches the album art of your most recently played tracks, creates an image of specified size and sets it as the wallpaper.
-Currently only KDE desktop environment on Linux is supported, but adding your own desktop environment/window manager is trivial by adding a custom function in `wallpaper.go`.
-It should work cross-platform too however, and is tested on Windows 10.
+Currently, setting wallpaper functionality is only supported in Linux; specifically on KDE, GNOME, and Sway, but adding your own desktop environment/window manager is trivial by adding a custom function in `wallpaper.go`.
+The image generation will work regardless of the platform, and is tested on Windows 10.
 
-# Instructions (Linux)
+# Install Instructions (Linux)
+**Arch Linux** users can directly install from the [AUR](https://aur.archlinux.org/packages/background.fm)
+
+# Build Instructions (Cross-platform)
 1. Clone the repository
 2. Install Go using your preferred package manager
-3. Run `go build -o bg main.go lastfm.go wallpaper.go utils.go`
-4. Create configuration file at `$HOME/.config/background.fm/config.json`
-5. Set wallpapers with the command: `./background.fm --width=1920 --height=1080 --desktop_environment=kde --image_size=extralarge`
+3. Depending on your target platform, build the app:
+
+   ```
+   GOOS=linux GOARCH=amd64 go build -o background.fm main.go lastfm.go wallpaper.go utils.go # linux x64
+   ```
+   ```
+   GOOS=windows GOARCH=amd64 go build -o background.fm main.go lastfm.go wallpaper.go utils.go # windows x64
+   ```
+   ```
+   GOOS=darwin GOARCH=arm64 go build -o background.fm main.go lastfm.go wallpaper.go utils.go # macos arm
+   ```
+   ```
+   GOOS=linux GOARCH=arm GOARM=7 go build -o background.fm main.go lastfm.go wallpaper.go utils.go # raspberrypi
+   ```
+   
+5. Create configuration file at `$HOME/.config/background.fm/config.json`
+6. Set wallpapers with the command: `./background.fm --width=1920 --height=1080 --desktop_environment=kde --image_size=extralarge`
 
 # Sample Configuration File
 ```
