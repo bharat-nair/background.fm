@@ -118,7 +118,7 @@ func main() {
 
 		img, _, err := image.Decode(f)
 		if err != nil {
-			slog.Error("error decoding image", "error", err)
+			slog.Warn("error decoding image", "filePath", filePath, "error", err)
 			continue
 		}
 		f.Close()
@@ -154,6 +154,16 @@ func main() {
 	switch *desktopEnvironment {
 	case "kde":
 		SetWallpaperKDE(
+			outputFile,
+			fmt.Sprintf("#%02x%02x%02x", uint8(background[0]), uint8(background[1]), uint8(background[2])),
+		)
+	case "sway":
+		SetWallpaperSway(
+			outputFile,
+			fmt.Sprintf("#%02x%02x%02x", uint8(background[0]), uint8(background[1]), uint8(background[2])),
+		)
+	case "gnome":
+		SetWallpaperGnome(
 			outputFile,
 			fmt.Sprintf("#%02x%02x%02x", uint8(background[0]), uint8(background[1]), uint8(background[2])),
 		)

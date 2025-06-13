@@ -31,3 +31,72 @@ func SetWallpaperKDE(filepath string, background string) (string, error) {
 
 	return string(stdout), err
 }
+
+func SetWallpaperSway(filepath string, background string) (string, error) {
+	cmd := exec.Command(
+		"swaybg",
+		"--image",
+		filepath,
+		"--color",
+		background,
+		"--mode",
+		"center",
+	)
+
+	stdout, err := cmd.Output()
+
+	return string(stdout), err
+}
+
+func SetWallpaperGnome(filepath string, background string) (string, error) {
+
+	cmd := exec.Command(
+		"gsettings",
+		"set",
+		"org.gnome.desktop.background",
+		"picture-uri",
+		fmt.Sprintf("file://%s", filepath),
+	)
+	stdout, err := cmd.Output()
+	if err != nil {
+		return string(stdout), err
+	}
+
+	cmd = exec.Command(
+		"gsettings",
+		"set",
+		"org.gnome.desktop.background",
+		"picture-uri-dark",
+		fmt.Sprintf("file://%s", filepath),
+	)
+	stdout, err = cmd.Output()
+	if err != nil {
+		return string(stdout), err
+	}
+
+	cmd = exec.Command(
+		"gsettings",
+		"set",
+		"org.gnome.desktop.background",
+		"picture-options",
+		"centered",
+	)
+	stdout, err = cmd.Output()
+	if err != nil {
+		return string(stdout), err
+	}
+
+	cmd = exec.Command(
+		"gsettings",
+		"set",
+		"org.gnome.desktop.background",
+		"primary-color",
+		background,
+	)
+	stdout, err = cmd.Output()
+	if err != nil {
+		return string(stdout), err
+	}
+
+	return string(stdout), err
+}
